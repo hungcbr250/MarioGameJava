@@ -1,0 +1,100 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    flatDir{
+        dirs("libs")
+    }
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+}
+project.ext.lwjglVersion = "3.3.2"
+project.ext.jomlVersion = "1.10.5"
+project.ext.lwjglNatives = "natives-windows"
+project.ext.imguiVersion = '1.81.0'
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    mavenCentral()
+}
+
+dependencies {
+
+    //box 2d
+    implementation name: 'jbox2d-library'
+    // JUnit
+    testImplementation('junit:junit:4.13')
+
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+    // ImGUI stuff
+    implementation "io.github.spair:imgui-java-app:$imguiVersion"
+    //LWJGL
+    implementation "org.lwjgl:lwjgl:3.3.2"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    implementation "org.joml:joml:${jomlVersion}"
+}
+test {
+    useJUnitPlatform()
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'your.main.Class'
+    }
+    from sourceSets.main.output
+}
+
+task copyAssets(type: Copy) {
+    copy {
+        from "assets"
+        into "${buildDir}/libs/assets"
+    }
+
+    copy {
+        from "level.txt"
+        into "${buildDir}/libs"
+    }
+}
+
+task fatJar(type: Jar) {
+  manifest.from jar.manifest
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  } {
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+  }
+  with jar
+}
+
+fatJar.dependsOn(copyAssets)
+
+artifacts {
+    archives fatJar
+}
+
+

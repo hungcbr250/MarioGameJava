@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "ronalHung",
+    "score": 40,
+    "maxScore": 330
+  },
+  {
+    "id": 2,
+    "name": "Hungkk",
+    "score": 140,
+    "maxScore": 100
+  },
+  {
+    "id": 3,
+    "name": "Hungoo",
+    "score": 280,
+    "maxScore": 450
+  },
+  {
+    "id": 4,
+    "name": "Hungjj",
+    "score": 100,
+    "maxScore": 100
+  },
+  {
+    "id": 5,
+    "name": "hungcritano",
+    "score": 0,
+    "maxScore": 0
+  },
+  {
+    "id": 6,
+    "name": "hungcr7",
+    "score": 0,
+    "maxScore": 0
+  },
+  {
+    "id": 7,
+    "name": "mbape",
+    "score": 40,
+    "maxScore": 40
+  },
+  {
+    "id": 8,
+    "name": "ndkhung",
+    "score": 50,
+    "maxScore": 0
+  },
+  {
+    "id": 9,
+    "name": "hungjr",
+    "score": 90,
+    "maxScore": 90
+  },
+  {
+    "id": 10,
+    "name": "hungcris",
+    "score": 30,
+    "maxScore": 0
+  },
+  {
+    "id": 11,
+    "name": "hunglka",
+    "score": 340,
+    "maxScore": 0
+  },
+  {
+    "id": 12,
+    "name": "hungpro",
+    "score": 240,
+    "maxScore": 240
+  },
+  {
+    "id": 13,
+    "name": "hungvj",
+    "score": 160,
+    "maxScore": 140
+  },
+  {
+    "id": 14,
+    "name": "hungvni",
+    "score": 210,
+    "maxScore": 210
+  },
+  {
+    "id": 15,
+    "name": "hungoo\\",
+    "score": 0,
+    "maxScore": 0
+  },
+  {
+    "id": 16,
+    "name": "bale",
+    "score": 20,
+    "maxScore": 20
+  }
+]
